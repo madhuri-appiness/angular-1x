@@ -1,0 +1,85 @@
+.sub-apartment {
+    max-width: 200px;
+}
+
+.add {
+    max-width: 43px;
+    min-height: 43px;
+    font-size: 30px;
+    background: #ccc;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.copy-holder,
+.delete {
+    display: inline-block;
+}
+
+.project-list li {
+    list-style-type: none;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.highlighted {
+    background-color: yellow;
+    font-weight: 600;
+}
+
+.search_field {
+    position: relative;
+    margin-top: 20px;
+}
+
+.search_field input {
+    padding: 16px 30px;
+}
+
+.fa-search {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.project-holder {
+    margin-top: 30px;
+    max-width: 400px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+}
+
+.project-holder h3 {
+    margin: 0;
+}
+
+.project-list .projectName {
+    color: #2e6da4;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.gitlist li.active {
+    color: yellow;
+    font-weight: bold;
+    background: #000;
+}
+
+.project-list .projectName ul li {
+    color: #000;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.selected {
+    background-color: red;
+}
+
+.gitlist li {
+    list-style-type: none;
+    background: grey;
+    padding: 10px;
+    color: #fff;
+}

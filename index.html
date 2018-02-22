@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title></title>
+    <script src="plugin/angular.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/master.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="controller/maincontroller.js"></script>
+</head>
+
+<body ng-app="app">
+    <div class="container" ng-controller="github">
+        <h1>Git Repo Structure</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div ng-repeat="branch in repoList track by $index">
+                    <ul class="gitlist">
+                        <li ng-click="commitList(branch.name)" ng-class="{'active' : branchActive == branch.name }">{{branch.name}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <ul class="gitlist" ng-repeat="commit in commitBranch track by $index">
+
+                    <li>
+                        {{commit.commit.message}}
+                    </li>
+                    <li>{{commit.commit.committer.name}} {{commit.commit.committer.date | date:'short'}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
