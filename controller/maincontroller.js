@@ -1,4 +1,4 @@
-var app = angular.module("app", []);
+var app = angular.module("app", ['angularUtils.directives.dirPagination']);
 app.controller('github', function($scope, $http) {
 
     $http.get("https://api.github.com/repos/angular/angular/branches")
@@ -17,7 +17,7 @@ app.controller('github', function($scope, $http) {
         $http.get("https://api.github.com/repos/angular/angular/commits?sha=" + commit)
             .then(function(response) {
                 $scope.commitBranch = response.data;
-                console.log($scope.commitBranch);
+                // console.log($scope.commitBranch);
             })
     }
 

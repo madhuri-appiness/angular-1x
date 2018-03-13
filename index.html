@@ -14,6 +14,7 @@
 
     <script src="app.js"></script>
     <script src="controller/maincontroller.js"></script>
+    <script src="plugin/pagedirective.js"></script>
 </head>
 
 <body ng-app="app">
@@ -28,13 +29,15 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <ul class="gitlist" ng-repeat="commit in commitBranch track by $index">
+                <ul class="gitlist" dir-paginate="commit in commitBranch | itemsPerPage:10">
 
                     <li>
                         {{commit.commit.message}}
                     </li>
                     <li>{{commit.commit.committer.name}} {{commit.commit.committer.date | date:'short'}}</li>
                 </ul>
+                <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                </dir-pagination-controls>
             </div>
         </div>
     </div>
