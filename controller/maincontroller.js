@@ -1,24 +1,28 @@
 var app = angular.module("app", ['angularUtils.directives.dirPagination']);
 app.controller('github', function($scope, $http) {
-
-    $http.get("https://api.github.com/repos/angular/angular/branches")
+    $scope.arr = [];
+    $scope.filmTitles = []
+    $http.get("http://swapi.co/api/people")
         .then(function(response) {
-            $scope.repoList = response.data;
-            // console.log($scope.repoList);
-        })
-    $scope.branchActive = 'master';
-    $http.get("https://api.github.com/repos/angular/angular/commits?sha=master")
-        .then(function(response) {
-            $scope.commitBranch = response.data;
+            $scope.responseList = response.data.results;
+            console.log($scope.responseList);
+            angular.forEach($scope.responseList, function(item) {
+                $scope.name = item.name;
+                $scope.arr.push(item);
+                angular.forEach(item.films, function(film) {
+                    $http.get(film).then(function(response) {
+                        $scope.filmName = response.data.title;
+                        $scope.filmTitles.push($scope.filmName)
+
+                    })
+
+                })
+            });
+            console.log("film", $scope.filmTitles);
+
+
 
         })
-    $scope.commitList = function(commit) {
-        $scope.branchActive = commit;
-        $http.get("https://api.github.com/repos/angular/angular/commits?sha=" + commit)
-            .then(function(response) {
-                $scope.commitBranch = response.data;
-                // console.log($scope.commitBranch);
-            })
-    }
 
-});
+
+})

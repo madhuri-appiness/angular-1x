@@ -19,26 +19,65 @@
 
 <body ng-app="app">
     <div class="container" ng-controller="github">
-        <h1>Git Repo Structure</h1>
+        <h1>SwApi Structure</h1>
         <div class="row">
-            <div class="col-md-4">
-                <div ng-repeat="branch in repoList track by $index">
-                    <ul class="gitlist">
-                        <li ng-click="commitList(branch.name)" ng-class="{'active' : branchActive == branch.name }">{{branch.name}}</li>
-                    </ul>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search for name" ng-model="nameVal">
                 </div>
             </div>
-            <div class="col-md-8">
-                <ul class="gitlist" dir-paginate="commit in commitBranch | itemsPerPage:10">
-
-                    <li>
-                        {{commit.commit.message}}
-                    </li>
-                    <li>{{commit.commit.committer.name}} {{commit.commit.committer.date | date:'short'}}</li>
-                </ul>
-                <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
-                </dir-pagination-controls>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search for gender" ng-model="gender">
+                </div>
             </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search for D.O.B" ng-model="birth">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search for film" ng-model="film">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div ng-repeat="item in arr | filter: { name:nameVal }">
+
+                    <div class="name">
+                        <h3>{{item.name}}</h3>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <div ng-repeat="item in arr | filter :{ gender :gender} ">
+
+                    <div class="gender">
+                        <h3>{{item.gender}}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div ng-repeat="item in arr | filter: { birth_year:birth }">
+
+                    <div class="birthDate">
+                        <h3>{{item.birth_year}}</h3>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <div ng-repeat="film in filmTitles | filter : film track by $index">
+                    <div class="films">
+                        <h3>{{film}}</h3>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </div>
 
